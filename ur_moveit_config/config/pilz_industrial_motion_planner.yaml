@@ -5,7 +5,24 @@ request_adapters: >-
   default_planner_request_adapters/FixStartStateBounds
   default_planner_request_adapters/FixStartStateCollision
   default_planner_request_adapters/FixStartStatePathConstraints
-  
-default_planner_config: LIN
-planning_pipeline_id: pilz_industrial_motion_planner
-max_sampling_attempts: 1000
+
+planner_configs:
+  PTP:
+    type: pilz_industrial_motion_planner/PTP
+    max_velocity_scaling_factor: 1.0
+    max_acceleration_scaling_factor: 1.0
+  LIN:
+    type: pilz_industrial_motion_planner/LIN
+    max_velocity_scaling_factor: 1.0
+    max_acceleration_scaling_factor: 1.0
+  CIRC:
+    type: pilz_industrial_motion_planner/CIRC
+    max_velocity_scaling_factor: 1.0
+    max_acceleration_scaling_factor: 1.0
+
+ur_manipulator:
+  default_planner_config: LIN 
+  planner_configs:
+    - PTP
+    - LIN
+    - CIRC
